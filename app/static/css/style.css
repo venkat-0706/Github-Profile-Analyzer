@@ -1,0 +1,258 @@
+:root {
+  --bg: #0b1220;
+  --card: rgba(255,255,255,0.08);
+  --accent: #3b82f6;
+  --text: #e5e7eb;
+  --muted: #9ca3af;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(180deg, #0f1e3a, var(--bg));
+  color: var(--text);
+}
+
+/* NAVBAR */
+.navbar {
+  padding: 20px 30px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.brand:hover .logo {
+  transform: scale(1.05);
+  box-shadow: 0 6px 18px rgba(59,130,246,0.45);
+}
+
+.brand-text {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 30px;
+}
+
+/* HERO */
+.hero {
+  text-align: center;
+  padding: 70px 20px;
+}
+
+.hero p {
+  color: var(--muted);
+  max-width: 640px;
+  margin: 15px auto;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.search-box input {
+  width: 260px;
+  padding: 14px;
+  border-radius: 10px;
+  border: none;
+}
+
+.search-box button {
+  padding: 14px 24px;
+  border-radius: 10px;
+  background: var(--accent);
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+/* FEATURES */
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--card);
+  backdrop-filter: blur(16px);
+  padding: 25px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+/* RESULT */
+.result-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.score-ring {
+  width: 160px;
+  height: 160px;
+  margin: 20px auto;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) 0deg, #0b1220 0deg);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 42px;
+}
+
+/* GRID */
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px,1fr));
+  gap: 28px;
+}
+
+.card {
+  background: var(--card);
+  backdrop-filter: blur(18px);
+  padding: 28px;
+  border-radius: 18px;
+}
+
+.metric-list li {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: var(--muted);
+}
+
+.diag-grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 14px;
+}
+
+/* AI */
+.ai-card {
+  grid-column: span 2;
+}
+
+.ai-content {
+  line-height: 1.7;
+  font-size: 15px;
+}
+
+/* BACK */
+.back-btn {
+  display: inline-block;
+  margin: 40px auto;
+  padding: 14px 26px;
+  border-radius: 10px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* LOADER */
+.loader {
+  margin-top: 20px;
+  color: var(--accent);
+}
+
+.hidden {
+  display: none;
+}
+
+/* MOBILE */
+@media(max-width:700px) {
+  .search-box {
+    flex-direction: column;
+  }
+  .ai-card {
+    grid-column: span 1;
+  }
+}
+.evaluation-pipeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  gap: 24px;
+  margin: 40px 0;
+}
+
+.eval-step {
+  background: rgba(255,255,255,0.06);
+  backdrop-filter: blur(14px);
+  border-radius: 16px;
+  padding: 22px;
+  text-align: center;
+  position: relative;
+}
+
+.eval-step span {
+  display: block;
+  margin-top: 12px;
+  font-weight: 600;
+}
+
+.spinner {
+  width: 42px;
+  height: 42px;
+  border: 4px solid rgba(255,255,255,0.2);
+  border-top-color: #3b82f6;
+  border-radius: 50%;
+  margin: auto;
+  animation: spin 1s linear infinite;
+}
+
+.check {
+  display: none;
+  font-size: 28px;
+  color: #22c55e;
+}
+
+.eval-step.completed .spinner {
+  display: none;
+}
+
+.eval-step.completed .check {
+  display: block;
+  animation: pop 0.4s ease-out;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pop {
+  0% { transform: scale(0.5); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+.final-score {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.hidden {
+  display: none;
+}
+.final-score .score-ring {
+  width: 180px;
+  height: 180px;
+  font-size: 48px;
+}  

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>GitHub Score</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+
+<header class="navbar" data-aos="fade-down">
+  <div class="brand">
+    <img
+      src="https://res.cloudinary.com/dhmixzenl/image/upload/v1767064061/github_profile_kzpdbl.png"
+      alt="GitHub Score Logo"
+      class="logo"
+      data-aos="zoom-in"
+      data-aos-delay="100"
+    />
+    <span class="brand-text">GitHub Score</span>
+  </div>
+</header>
+
+<main class="container">
+  {% block content %}{% endblock %}
+</main>
+
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script src="/static/js/main.js"></script>
+
+</body>
+</html>

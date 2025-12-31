@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="hero" data-aos="fade-up">
+  <h1>GitHub Profile Evaluation</h1>
+  <p>
+    Analyze real GitHub activity and receive AI-driven recruiter insights
+    to improve visibility and professional impact.
+  </p>
+
+  <form
+    method="post"
+    action="/score"
+    class="search-box"
+    data-aos="zoom-in"
+    data-aos-delay="200"
+    onsubmit="showLoader()"
+  >
+    <input
+      type="text"
+      name="username"
+      placeholder="Enter GitHub username"
+      required
+    />
+    <button type="submit">Evaluate Profile</button>
+  </form>
+
+  <div id="loader" class="loader hidden">
+    Evaluating GitHub profile…
+  </div>
+
+  {% if error %}
+    <p class="error-msg">{{ error }}</p>
+  {% endif %}
+</section>
+
+<section class="features">
+  <div class="feature-card" data-aos="fade-up">Popularity & Reach</div>
+  <div class="feature-card" data-aos="fade-up" data-aos-delay="100">Repository Quality</div>
+  <div class="feature-card" data-aos="fade-up" data-aos-delay="200">Profile Strength</div>
+  <div class="feature-card" data-aos="fade-up" data-aos-delay="300">Recruiter Signals</div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- ================= HEADER ================= -->
+<section class="result-header" data-aos="fade-down">
+  <h2>{{ username }}</h2>
+  <p class="subtitle">GitHub Profile Evaluation Summary</p>
+</section>
+
+<!-- ================= EVALUATION PIPELINE ================= -->
+<section class="evaluation-pipeline" data-aos="fade-up">
+
+  <div class="eval-step" data-step="1">
+    <div class="spinner"></div>
+    <span>Profile Completeness</span>
+    <div class="check">✓</div>
+  </div>
+
+  <div class="eval-step" data-step="2">
+    <div class="spinner"></div>
+    <span>Repository Quality</span>
+    <div class="check">✓</div>
+  </div>
+
+  <div class="eval-step" data-step="3">
+    <div class="spinner"></div>
+    <span>Community Impact</span>
+    <div class="check">✓</div>
+  </div>
+
+  <div class="eval-step" data-step="4">
+    <div class="spinner"></div>
+    <span>Recruiter Readiness</span>
+    <div class="check">✓</div>
+  </div>
+
+</section>
+
+<!-- ================= FINAL SCORE ================= -->
+<section class="final-score hidden" data-aos="zoom-in">
+  <div class="score-ring" data-score="{{ score }}">
+    <span id="scoreValue">0</span>
+    <small>/100</small>
+  </div>
+  <p class="score-label">Overall GitHub Score</p>
+</section>
+
+<!-- ================= DASHBOARD ================= -->
+<section class="dashboard-grid hidden">
+
+  <!-- SCORE BREAKDOWN -->
+  <div class="card" data-aos="fade-right">
+    <h3>📊 Score Breakdown</h3>
+    <ul class="metric-list">
+      {% for key, value in metrics.items() %}
+      <li>
+        <span>{{ key }}</span>
+        <strong>{{ value }}</strong>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <!-- DIAGNOSTICS -->
+  <div class="card" data-aos="fade-left">
+    <h3>🧪 Diagnostics</h3>
+    <div class="diag-grid">
+      {% for key, value in diagnostics.items() %}
+      <div>
+        <span>{{ key }}</span>
+        <strong>{{ value }}</strong>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <!-- CURRENT DRAWBACKS -->
+  <div class="card" data-aos="fade-up">
+    <h3>❌ Current Profile Drawbacks</h3>
+    <ul class="bullet-list">
+      {% if drawbacks %}
+        {% for d in drawbacks %}
+        <li>{{ d }}</li>
+        {% endfor %}
+      {% else %}
+        <li>No major drawbacks detected</li>
+      {% endif %}
+    </ul>
+  </div>
+
+  <!-- IMPROVEMENTS -->
+  <div class="card" data-aos="fade-up">
+    <h3>🔧 How to Improve Your GitHub Score</h3>
+    <ul class="bullet-list">
+      {% if improvements %}
+        {% for i in improvements %}
+        <li>{{ i }}</li>
+        {% endfor %}
+      {% else %}
+        <li>Your profile already meets baseline expectations</li>
+      {% endif %}
+    </ul>
+  </div>
+
+  <!-- AI RECRUITER EVALUATION -->
+  <div class="card ai-card" data-aos="fade-up">
+    <h3>🔥 🚀 Recruiter Attention Boost</h3>
+    <div class="ai-content">
+      {% if recruiter_feedback %}
+        {{ recruiter_feedback
+           | replace("**","")
+           | replace("##","")
+           | replace("\n","<br>")
+           | safe }}
+      {% else %}
+        <p class="muted">Recruiter analysis in progress…</p>
+      {% endif %}
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= BACK BUTTON ================= -->
+<a href="/" class="back-btn hidden" data-aos="zoom-in">
+  Analyze Another Profile
+</a>
+
+{% endblock %}
