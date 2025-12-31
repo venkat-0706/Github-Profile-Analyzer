@@ -184,7 +184,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --port 9000
 ```
 
-Open 👉 **[http://127.0.0.1:9000](http://127.0.0.1:9000)**
+Open 👉 **[Click Here](https://github-score-ai.onrender.com)**
 
 ---
 
